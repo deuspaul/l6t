@@ -1,0 +1,26 @@
+name: jobs 
+
+on:
+  workflow_dispatch:
+  
+jobs:
+  build-job:
+    name: build job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Define output variable
+        id: buildStep
+        run: echo "output1=This is a variable from job 1" >> "$GITHUB_OUTPUT"
+  
+  test-job:
+    name: security testing
+    runs-on: ubuntu-latest
+    steps:
+      - name: unit testing and linting
+        id: testStep
+        run: echo testing
+
+  container-scanning:
+    #image: 
+    name: scan the container image
+    runs-on: ubuntu-latest
