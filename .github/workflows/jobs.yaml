@@ -27,6 +27,24 @@ jobs:
         #run: echo ${{ fromJSON(needs.build-job.outputs.build-output) }}
         #if: contains(needs.build-job.outputs.build-output, 'job' )
         run: echo ${{ needs.build-job.outputs.build-output }}
+  concurrency-job1:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: testing
+    steps:
+      - run: echo job1
+  concurrency-job2:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: testing
+    steps:
+      - run: echo job2
+  concurrency-job3:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: testing
+    steps:
+      - run: echo job3
       
     
   
