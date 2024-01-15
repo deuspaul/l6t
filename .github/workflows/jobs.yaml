@@ -20,7 +20,7 @@ jobs:
     needs: build-job
     steps:
       - name: test build variable
-     #   if: ${{ contains(needs.build-job.outputs.build-output, 'job' }}
+        if: ${{ contains(needs.build-job.outputs.build-output, 'job' }}
         run: echo ${{ needs.build-job.outputs.build-output }}
       
     
