@@ -14,14 +14,14 @@ jobs:
       - name: Define output variable
         id: buildStep
         run: echo "buildOut=This is a variable from job 1" >> "$GITHUB_OUTPUT"
-  #deploy-job:
-   # name: deploy job
-   # runs-on: ubuntu-latest
-   # needs: build-job
-   # steps:
-    #  - name: test build variable
+  deploy-job:
+    name: deploy job
+    runs-on: ubuntu-latest
+    needs: build-job
+    steps:
+      - name: test build variable
      #   if: ${{ contains(needs.build-job.outputs.build-output, 'job' }}
-     #   run: echo ${{ jobs.build-job.outputs.build-output }}
+        run: echo ${{ jobs.build-job.outputs.build-output }}
       
     
   
