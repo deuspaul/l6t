@@ -14,7 +14,6 @@ jobs:
       - name: Define output variable
         id: buildStep
         run: |
-          bun --version
           bunver=$(bun --version)
           echo "buildOut=bunver" >> "$GITHUB_OUTPUT"
        #run: echo "buildOut=This is a variable from job 1" >> "$GITHUB_OUTPUT"
@@ -25,9 +24,9 @@ jobs:
     needs: build-job
     steps:
       - name: test build variable
-        run: echo ${{ fromJSON(needs.build-job.outputs.build-output) }}
+        #run: echo ${{ fromJSON(needs.build-job.outputs.build-output) }}
         #if: contains(needs.build-job.outputs.build-output, 'job' )
-        #run: echo ${{ needs.build-job.outputs.build-output }}
+        run: echo ${{ needs.build-job.outputs.build-output }}
       
     
   
