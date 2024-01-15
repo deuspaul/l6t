@@ -39,12 +39,6 @@ jobs:
       group: testing
     steps:
       - run: echo job2
-  concurrency-job3:
-    runs-on: ubuntu-latest
-    concurrency:
-      group: testing
-    steps:
-      - run: echo job3
       
     
   
