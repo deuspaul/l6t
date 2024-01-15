@@ -15,7 +15,7 @@ jobs:
         id: buildStep
         run: |
           bunver=$(bun --version)
-          echo "buildOut=bunver" >> "$GITHUB_OUTPUT"
+          echo "buildOut=$bunver" >> "$GITHUB_OUTPUT"
        #run: echo "buildOut=This is a variable from job 1" >> "$GITHUB_OUTPUT"
   deploy-job:
     #if: ${{ fromJSON(needs.build-job.outputs.build-output) > 1 }}
