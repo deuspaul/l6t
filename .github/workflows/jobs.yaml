@@ -5,7 +5,7 @@ on:
   
 jobs:
   build-job:
-    #image: 
+    container: oven/bun:slim
     outputs:
       build-output: ${{ steps.buildStep.outputs.buildOut }}
     name: build job
@@ -13,7 +13,10 @@ jobs:
     steps:
       - name: Define output variable
         id: buildStep
-        run: echo "buildOut=This is a variable from job 1" >> "$GITHUB_OUTPUT"
+        run: |
+          bunver=$(bun --version)
+          echo "buildOut=bunver" >> "$GITHUB_OUTPUT"
+       #run: echo "buildOut=This is a variable from job 1" >> "$GITHUB_OUTPUT"
   deploy-job:
     name: deploy job
     runs-on: ubuntu-latest
